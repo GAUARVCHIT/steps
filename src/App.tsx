@@ -8,6 +8,7 @@ interface Task {
   id: number
   name: string
   status: string
+  progress: number
 }
 
 interface WorkflowState {
@@ -20,12 +21,27 @@ const App: React.FC = () => {
   const [workflowState, setWorkflowState] = useState<WorkflowState>({
     currentStep: 0,
     tasks: [
-      { id: 1, name: "Go Live with Service Delivery", status: "pending" },
-      { id: 2, name: "Complete Inputs", status: "pending" },
-      { id: 3, name: "Validate Inputs", status: "pending" },
-      { id: 4, name: "Share Information Required", status: "pending" },
-      { id: 5, name: "Raise DMS Ticket", status: "pending" },
-      { id: 6, name: "Perform Duplicates Check", status: "pending" },
+      {
+        id: 1,
+        name: "Go Live with Service Delivery",
+        status: "completed",
+        progress: 100,
+      },
+      { id: 2, name: "Complete Inputs", status: "in progress", progress: 50 },
+      { id: 3, name: "Validate Inputs", status: "pending", progress: 0 },
+      {
+        id: 4,
+        name: "Share Information Required",
+        status: "pending",
+        progress: 0,
+      },
+      { id: 5, name: "Raise DMS Ticket", status: "pending", progress: 0 },
+      {
+        id: 6,
+        name: "Perform Duplicates Check",
+        status: "pending",
+        progress: 0,
+      },
     ],
     notifications: [],
   })
@@ -61,6 +77,7 @@ const App: React.FC = () => {
       id: newId,
       name: `New Task ${newId}`,
       status: "pending",
+      progress: 0,
     }
     setWorkflowState((prevState) => ({
       ...prevState,
