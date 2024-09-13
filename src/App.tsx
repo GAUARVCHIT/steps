@@ -19,7 +19,7 @@ interface WorkflowState {
 
 const App: React.FC = () => {
   const [workflowState, setWorkflowState] = useState<WorkflowState>({
-    currentStep: 0,
+    currentStep: 1, // Set the initial current step
     tasks: [
       {
         id: 1,

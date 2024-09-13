@@ -20,10 +20,14 @@ const CustomTaskNode = ({ data }) => {
         border: "1px solid #ddd",
         borderRadius: "5px",
         padding: "10px",
-        width: "200px",
+        width: "180px", // Adjust this value if needed
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
-      <Handle type="target" position={Position.Top} />
+      <Handle type="target" position={Position.Left} />{" "}
+      {/* Adjust handle position */}
       <div>{data.label}</div>
       <div
         style={{
@@ -33,7 +37,20 @@ const CustomTaskNode = ({ data }) => {
           marginTop: "5px",
         }}
       />
-      <Handle type="source" position={Position.Bottom} />
+      {data.isCurrent && (
+        <div
+          style={{
+            width: 0,
+            height: 0,
+            borderLeft: "10px solid transparent",
+            borderRight: "10px solid transparent",
+            borderTop: "10px solid #FF4500",
+            marginTop: "5px",
+          }}
+        />
+      )}
+      <Handle type="source" position={Position.Right} />{" "}
+      {/* Adjust handle position */}
     </div>
   )
 }
